@@ -99,10 +99,6 @@ class MLPModel(snt.AbstractModule):
 
 
 class NodeNetwork(snt.AbstractModule):
-  """
-  A Graph Network module utilises only the node feature. i.e. it does not
-  perform message passing.
-  """
 
   def __init__(self,
                node_model_fn,
@@ -111,18 +107,7 @@ class NodeNetwork(snt.AbstractModule):
                                'use_nodes': True,
                                'use_globals': False},
                name="node_network"):
-    """Initializes the GraphNetwork module.
 
-    Args:
-      node_model_fn: A callable that will be passed to NodeBlock to perform
-        per-node computations. The callable must return a Sonnet module (or
-        equivalent; see NodeBlock for details).
-      node_block_opt: Additional options to be passed to the NodeBlock. Can
-        contain the keys `use_received_edges`, `use_sent_edges`, `use_nodes`,
-        `use_globals` (all set to True by default), and
-        `received_edges_reducer`, `sent_edges_reducer` (default to `reducer`).
-      name: The module name.
-    """
     super(NodeNetwork, self).__init__(name=name)
 
     with self._enter_variable_scope():
@@ -130,16 +115,4 @@ class NodeNetwork(snt.AbstractModule):
           node_model_fn=node_model_fn, **node_block_opt)
 
   def _build(self, graph):
-    """Connects the GraphNetwork.
-
-    Args:
-      graph: A `graphs.GraphsTuple` containing `Tensor`s. Depending on the block
-        options, `graph` may contain `None` fields; but with the default
-        configuration, no `None` field is allowed. Moreover, when using the
-        default configuration, the features of each nodes, edges and globals of
-        `graph` should be concatenable on the last dimension.
-
-    Returns:
-      An output `graphs.GraphsTuple` with updated edges, nodes and globals.
-    """
     return self._node_block(graph)

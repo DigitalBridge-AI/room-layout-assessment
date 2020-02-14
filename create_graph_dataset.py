@@ -155,18 +155,7 @@ def convert_project(layout, include_products=True, include_apertures=True):
 
 
 def create_wall_nodes(vertices, height, num_node_types):
-    """
-    Determines the angles of the room's corners
 
-    Parameters
-    ----------
-    vertices :
-
-    Returns
-    -------
-    corners:
-
-    """
     room_features = []
     senders = []
     receivers = []
@@ -227,21 +216,7 @@ def create_wall_nodes(vertices, height, num_node_types):
 
 
 def convert_angles_to_rotation(angle):
-    """
-    Convert a rotation to the required unraveled rotation matrix
 
-    Parameters
-    ----------
-    angle: float
-        A rotation is radians
-
-    Returns
-    -------
-    rotation: 9 element list
-        The unraveled rotation matrix.  This is the format required by the
-        affine_transform(...) in Shapely:
-        https://shapely.readthedocs.io/en/stable/manual.html.
-    """
     sin = np.sin(angle)
     cos = np.cos(angle)
     rotation = [cos, sin]
