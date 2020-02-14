@@ -217,7 +217,7 @@ def run_experiment(data_directory, augment, type='GNN', graph_depth=2,
     train_limit = int(len(class_graphs[0]) * 0.9)
     train_data = class_graphs[positive_class][:train_limit]
     val_positive = class_graphs[positive_class][train_limit:]
-    num_training_epochs = 100000
+    num_training_epochs = 1
     batch_size = 1024
 
     tf.reset_default_graph()
