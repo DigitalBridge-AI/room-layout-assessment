@@ -1,0 +1,8 @@
+graph_nets
+tensorflow_gpu>=1.15,<2
+dm-sonnet<2
+tensorflow_probability<0.9
+numpy
+shapely
+tqdm
+matplotlib==3.0.2
