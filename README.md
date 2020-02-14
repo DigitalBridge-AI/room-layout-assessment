@@ -43,10 +43,10 @@ See the files for details of the available options for the model.
 
 ## Visualise a Graph
 
-A room can be visualised as a layout and its corresponding graph from its [data dictionary](https://github.com/deepmind/graph_nets) using:
+A room can be visualised as a layout and its corresponding graph from its [data dictionary](https://github.com/deepmind/graph_nets) by adding the following to the code:
 ```shell
-$ visualise_room(data_dict)
-$ plt.show()
+visualise_room(data_dict)
+plt.show()
 ```
 
 ## Room Generation
